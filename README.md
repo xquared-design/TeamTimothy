@@ -1,7 +1,7 @@
 # TeamTimothy
 
 ##Intro
-This project started as a part of [Makers Making Change's Access Makeathon] {http://www.makersmakingchange.com/accessmakeathonsummary/)
+This project started as a part of [Makers Making Change's Access Makeathon] (http://www.makersmakingchange.com/accessmakeathonsummary/)
 The goal is to help Timothy, a 10 year-old boy with ataxia, play his favourite games on Wii console.
 
 
