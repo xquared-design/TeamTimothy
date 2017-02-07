@@ -1,5 +1,5 @@
 #Bill of Material
-Here you will find all the components listed in [BOM.xlsx](BOM.xlsx) presented for your convenience.
+Here you will find all the components listed in [BOM.xlsx](BOM.xlsx?raw=true) presented for your convenience.
 ##Mechanical
 | PART                 | PART DETAIL                                                                                                                  |   QUATITY USED | SUPPLIER   | PRODUCT ID    | LINK                                           | UNIT PRICE   | ALT. SUPPLIER   | ALT. UNIT PRICE   | MANUFACTURER   | MANUFACTURER LINK                                                                                                                                                  |
 |:---------------------|:-----------------------------------------------------------------------------------------------------------------------------|---------------:|:-----------|:--------------|:-----------------------------------------------|:-------------|:----------------|:------------------|:---------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
