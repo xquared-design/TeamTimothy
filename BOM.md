@@ -7,3 +7,6 @@ Here you will find all the components listed in [BOM.xlsx](BOM.xlsx) presented f
 | joystick             | Sanwa JLF-TP-8YT-SK OEM Green Ball Handle Arcade Joystick 4 & 8 Way Adjustable (Mad Catz SF4 Tournament Joystick Compatible) |              1 | amazon.com | JLF-TP-8YT-SK | -                                              | 22.92 USD    | -               | -                 | Sanwa          | -                                                                                                                                                                  |
 | joystick push button | MICRO SWITCH DM1-03 LONG LEVER                                                                                               |              1 | Lee's      | DM1-03        | http://leeselectronic.com/en/product/347.html  | 2.95         | -               | -                 | multicomp?     | -                                                                                                                                                                  |
 ##Electrical
+| PART   | PART DETAIL   | QUATITY USED   |
+|:-------|:--------------|:---------------|
+| -      | -             | -              |
