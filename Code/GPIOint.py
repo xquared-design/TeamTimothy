@@ -4,12 +4,14 @@ import threading
 GPIO.setmode(GPIO.BCM)
 
 DictIn = {1:17,2:27,3:22,4:5,5:6}
+DictOut = {'A':18,'B':23}
 
-GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(27, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(22, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(18, GPIO.OUT, initial=GPIO.HIGH)
-GPIO.setup(23, GPIO.OUT, initial=GPIO.HIGH)
+for key in DictIn
+    GPIO.setup(DictIn[key], GPIO.IN, pull_up_down=GPIO.PUD_UP)
+
+for btn in DictOut
+    GPIO.setup(DictOut(btn), GPIO.OUT, initial=GPIO.HIGH)
+
 
 GPIO.setup(21, GPIO.OUT, initial=GPIO.LOW) #setup power button
 
