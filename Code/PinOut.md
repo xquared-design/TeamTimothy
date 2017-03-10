@@ -18,8 +18,9 @@ C | 18 | GPIO24
 Z | 22 | GPIO25
  
 #VCC and GND
-Name | Connector Pin | Pin Desc
-Power WiiMote | 1 | 3V3
-Ground WiiMote| 39 | GND 
+Name | Connector Pins | Pin Desc
+--- | --- | ---
+Power WiiMote | 1, 17| 3V3
+Ground WiiMote| 9, 25, 39 | GND 
 
 for now, check out [pinout.xyz](https://pinout.xyz/#) if you have any questions
