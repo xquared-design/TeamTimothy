@@ -1,19 +1,19 @@
 # TeamTimothy
 ##Table of Contents
-Intro
-Components
-License Terms
-Connecting to the Pi Zero
+1. Intro
+2. Components
+3. License Terms
+4. Connecting to the Pi Zero
 
 ##Intro
-This project started as a part of [Makers Making Change's Access Makeathon] (http://www.makersmakingchange.com/accessmakeathonsummary/)
-The goal is to help Timothy, a 10 year-old boy with ataxia, play his favourite games on Wii console. This project involves modifying a standard Nintendo Wii Remote and Nunchuk by replacing the buttons and joystick with larger versions and positioning them in a more ergonomic arrangement. The factory PCBs from the controllers are retained and new inputs wired to them.
+This project started as a part of [Makers Making Change Access Makeathon](http://www.makersmakingchange.com/accessmakeathonsummary/), an initiative of the [Neil Squire Society](http://www.neilsquire.ca).
+The goal is to help Timothy, a 10 year-old boy with ataxia, play his favourite games on Wii console. This project involves modifying a standard Nintendo Wii Remote and Nunchuk by replacing the buttons and joystick with larger versions and positioning them in a more ergonomic arrangement. The factory PCBs from the controllers are retained and new inputs wired to them. The code is executed using a Raspberry Pi Zero with Raspbian.
 
 ##Components
-For a full list of components used, see the bill of material [here](BOM.md)
+For a full list of components used, see the bill of material [here](BOM.md).
 
 ##License Terms
-All hardware is licensed under [Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+All hardware is licensed under [Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
 ##Connecting to the Pi Zero
 The simplest way to connect to the Raspberry Pi Zero is to create an "ethernet" connection over USB using the USB port on the Pi Zero. This allows you to connect to the Pi Zero in "headless" mode without using additional adapters or peripherals. The following guide is partly based on this [Circuit Basics tutorial](http://www.circuitbasics.com/raspberry-pi-zero-ethernet-gadget/) as well as other guides.
@@ -28,6 +28,6 @@ If your Pi Zero comes pre-installed with the software needed to act as a Wiimote
 
 ###Connecting to the Pi Zero over USB
 Use a regular micro-USB to USB male-to-male cable or adapter (*not* an OTG adapter) to plug in your Raspberry Pi Zero to your computer. Make sure to connect the cable or adapter to the Pi Zero port marked "USB", not the one marked "PWR" (this allows you to send data and power to the Pi over USB instead of just power). Wait approximately 90 seconds for the green light on the Pi to stop blinking and for the relevant drivers to be installed on your PC (if using Windows). Using Terminal you can connect to the Pi by typing 
-"ssh pi@raspberrypi.local" and pressing Enter. Using PuTTY, you can connect by typing "raspberrypi.local" into the Host Name field in putty.exe and clicking "Open" or pressing Enter. PuTTY will prompt you to login as a user, and you can enter "pi". Both Terminal and PuTTY will prompt you for the password to pi, which in this case is "0calories". You should now be connected to the Pi! If you aren't, please read the following troubleshooting section.
+`ssh pi@raspberrypi.local` and pressing Enter. Using PuTTY, you can connect by typing `raspberrypi.local` into the Host Name field in putty.exe and clicking "Open" or pressing Enter. PuTTY will prompt you to login as a user and you should enter `pi`. Both Terminal and PuTTY will prompt you for the password to pi, which in this case is `0calories`. You should now be connected to the Pi! If you aren't, please read the following troubleshooting section.
 
 ###Troubleshooting 
