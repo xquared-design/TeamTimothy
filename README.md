@@ -36,8 +36,8 @@ Using Terminal you can connect to the Pi by typing `ssh pi@raspberrypi.local` an
 ####Installing RNDIS Drivers on Windows
 You may get the following error message when connecting to the Pi: 
 >Unable to open connection to raspberrypi.local
-
 >Host does not exist
+
 If you are using a non-OTG USB cable connected to the USB port of the Pi Zero and you have installed the necessary software on your Windows computer and Pi, then you may need to install the RNDIS drivers. With the Pi still connected to the computer, open "Windows Device Manager" and locate the Pi under "Other Devices" as "RNDIS/Ethernet Gadget". Right-click on it and click "Update Driver Software...". Click "Browse my computer for driver software" in the window that opens up and click "Let me pick from a list of device drivers on my computer" in the following window. Scroll down the list that appears, select "Network Adapters", and click "Next". Scroll down the Manufacturer list on the left side and click "Microsoft", then scroll down the list on the right side and click "Remote NDIS Compatible Device" and click "Next". Click "Yes" in the warning that appears and wait for the driver to finish installing. Once installation is complete, you should see a window that confirms that Windows has sucessfully updated your driver software. You should now be able to log in to your Pi with PuTTY using raspberrypi.local.
 
 ###Setting Up a Shared Internet Connection on Windows
