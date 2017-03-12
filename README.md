@@ -7,7 +7,7 @@
 
 ##Intro
 This project started as a part of [Makers Making Change Access Makeathon](http://www.makersmakingchange.com/accessmakeathonsummary/), an initiative of the [Neil Squire Society](http://www.neilsquire.ca).
-The goal is to help Timothy, a 10 year-old boy with ataxia, play his favourite games on Wii console. This project involves modifying a standard Nintendo Wii Remote and Nunchuk by replacing the buttons and joystick with larger versions and positioning them in a more ergonomic arrangement. The factory PCBs from the controllers are retained and new inputs wired to them. The code is executed using a Raspberry Pi Zero with Raspbian. The following readme is partly based on this [Circuit Basics tutorial](http://www.circuitbasics.com/raspberry-pi-zero-ethernet-gadget/) and on other guides.
+The goal is to help Timothy, a 10 year-old boy with ataxia, play his favourite games on Wii console. This project involves modifying a standard Nintendo Wii Remote and Nunchuk by replacing the buttons and joystick with larger versions and positioning them in a more ergonomic arrangement. The factory PCBs from the controllers are retained and new inputs wired to them. The code is executed using a Raspberry Pi Zero with Raspbian. 
 
 ##Components
 For a full list of components used, see the bill of material [here](BOM.md).
@@ -16,6 +16,8 @@ For a full list of components used, see the bill of material [here](BOM.md).
 All hardware is licensed under [Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
 ##Connecting to the Pi Zero
+The following sections are partly based on this [Circuit Basics tutorial](http://www.circuitbasics.com/raspberry-pi-zero-ethernet-gadget/) and on other guides.
+
 The simplest way to connect to the Raspberry Pi Zero is to create an "ethernet" connection over USB using the USB port on the Pi Zero. This allows you to connect to the Pi Zero in "headless" mode without using additional adapters or peripherals.
 
 ###Setting Up Your Computer
@@ -38,7 +40,7 @@ You may get the following error message when connecting to the Pi:
 >Unable to open connection to raspberrypi.local
 >Host does not exist
 
-If you are using a non-OTG USB cable connected to the USB port of the Pi Zero and you have installed the necessary software on your Windows computer and Pi, then you may need to install the RNDIS drivers. With the Pi still connected to the computer, open "Windows Device Manager" and locate the Pi under "Other Devices" as "RNDIS/Ethernet Gadget". Right-click on it and click "Update Driver Software...". Click "Browse my computer for driver software" in the window that opens up and click "Let me pick from a list of device drivers on my computer" in the following window. Scroll down the list that appears, select "Network Adapters", and click "Next". Scroll down the Manufacturer list on the left side and click "Microsoft", then scroll down the list on the right side and click "Remote NDIS Compatible Device" and click "Next". Click "Yes" in the warning that appears and wait for the driver to finish installing. Once installation is complete, you should see a window that confirms that Windows has sucessfully updated your driver software. You should now be able to log in to your Pi with PuTTY using raspberrypi.local.
+If you have made sure that you are using a non-OTG USB cable connected to the USB port of the Pi Zero, you have installed the necessary software on your Windows computer and Pi and you *still* get this error, then you may need to install the RNDIS drivers. With the Pi still connected to the computer, open "Windows Device Manager" and locate the Pi under "Other Devices" as "RNDIS/Ethernet Gadget". Right-click on it and click "Update Driver Software...". Click "Browse my computer for driver software" in the window that opens up and click "Let me pick from a list of device drivers on my computer" in the following window. Scroll down the list that appears, select "Network Adapters", and click "Next". Scroll down the Manufacturer list on the left side and click "Microsoft", then scroll down the list on the right side and click "Remote NDIS Compatible Device" and click "Next". Click "Yes" in the warning that appears and wait for the driver to finish installing. Once installation is complete, you should see a window that confirms that Windows has sucessfully updated your driver software. You should now be able to log in to your Pi with PuTTY using raspberrypi.local.
 
 ###Setting Up a Shared Internet Connection on Windows
 If you type `sudo ping www.google.com` when connected to the Pi, you will get an error similar to the following:
