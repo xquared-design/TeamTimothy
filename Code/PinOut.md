@@ -1,6 +1,6 @@
-RPi Zero GPIO Pinout Mapping
+# RPi Zero GPIO Pinout Mapping
 
-Input (red buttons)
+## Input (red buttons)
 
 Button | Physical Pin # | (BCM) Pin Name.
 --- | --- | ---
@@ -10,7 +10,7 @@ Button | Physical Pin # | (BCM) Pin Name.
 4 | 29 | GPIO5 
 5 | 31 | GPIO6 
 
-Output (WiiMote buttons)
+## Output (WiiMote buttons)
 
 Button | Physical Pin # | (BCM) Pin Name.
 --- | --- | ---
@@ -19,7 +19,7 @@ B | 16 | GPIO23
 C | 18 | GPIO24 
 Z | 22 | GPIO25
  
-VCC and GND Connections
+## VCC and GND Connections
 
 Purpose | Physical Pin #s | (BCM) Pin Name.
 --- | --- | ---
