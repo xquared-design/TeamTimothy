@@ -2,8 +2,9 @@ import RPi.GPIO as GPIO
 import time
 import threading
 import os
-GPIO.setmode(GPIO.BCM)
+GPIO.setmode(GPIO.BCM) #use BCM numbering scheme
 
+#map buttons to BCM pins per PinOut.md
 DictIn = {1:17,2:27,3:22,4:5,5:6}
 DictOut = {'A':18,'B':23,'C':24,'Z':25}
 
@@ -15,9 +16,10 @@ for key in DictOut:
 
 
 GPIO.setup(21, GPIO.OUT, initial=GPIO.LOW) #setup power on indicator light
-GPIO.setup(26, GPIO.IN, pull_up_down=GPIO.PUD_UP) #setup shutdown btn
+GPIO.setup(26, GPIO.IN, pull_up_down=GPIO.PUD_UP) #setup shutdown button
 
-comboLookup = {17:[18],27:[23],22:[18,23]}
+#map BCM button inputs to BCM Wiimote outputs
+comboLookup = {17:[18],27:[23],22:[18,23]}  
 
 def thread_outputMacro(pin):
     GPIO.output(comboLookup[pin],GPIO.LOW)
