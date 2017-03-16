@@ -19,7 +19,7 @@ GPIO.setup(21, GPIO.OUT, initial=GPIO.LOW) #setup power on indicator light
 GPIO.setup(26, GPIO.IN, pull_up_down=GPIO.PUD_UP) #setup shutdown button
 
 #map BCM button inputs to BCM Wiimote outputs
-comboLookup = {17:[18],27:[23],22:[18,23]}  
+comboLookup = {17:[18],27:[23],22:[18,23],5:[24],6:[25]}  
 
 def thread_outputMacro(pin):
     GPIO.output(comboLookup[pin],GPIO.LOW)
