@@ -10,10 +10,10 @@ This project started as a part of [Makers Making Change Access Makeathon](http:/
 The goal is to help Timothy, a 10 year-old boy with ataxia, play his favourite games on Wii console. This project involves modifying a standard Nintendo Wii Remote and Nunchuk by replacing the buttons and joystick with larger versions and positioning them in a more ergonomic arrangement. The factory PCBs from the controllers are retained and new inputs wired to them. The code is executed using a Raspberry Pi Zero with Raspbian. 
 
 ## Components
-For a full list of components used, see the bill of material [here](BOM.md).
+For a full list of components used, see the bill of materials [here](BOM.md).
 
 ## License Terms
-All hardware is licensed under [Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+All hardware is licensed under [Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/) and all software is licensed under [GNU Lesser General Public License v3.0 (GNU LGPLv3)](https://choosealicense.com/licenses/lgpl-3.0/).
 
 ## Connecting to the Pi Zero
 The following sections are partly based on this [Circuit Basics tutorial](http://www.circuitbasics.com/raspberry-pi-zero-ethernet-gadget/) and on other guides.
