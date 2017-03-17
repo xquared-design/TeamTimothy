@@ -21,6 +21,7 @@ GPIO.setup(26, GPIO.IN, pull_up_down=GPIO.PUD_UP) #setup shutdown button
 #map BCM button inputs to BCM Wiimote outputs
 comboLookup = {17:[18],27:[23],22:[18,23],5:[24],6:[25]}  
 
+#when an input pin is called, toggle the corresponding output pin ON (LOW) and OFF
 def thread_outputMacro(pin):
     GPIO.output(comboLookup[pin],GPIO.LOW)
     print "pulling",  "low"
