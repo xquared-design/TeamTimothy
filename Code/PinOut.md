@@ -27,3 +27,9 @@ Power WiiMote | 1, 17| 3.3V
 Ground WiiMote| 9, 25, 39 | GND 
 
 Check out [pinout.xyz](https://pinout.xyz/#) for an interactive pinout diagram and [this sparkfun tutorial](https://learn.sparkfun.com/tutorials/raspberry-gpio) for a detailed explanation of GPIO on the Raspberry Pi.
+
+## Buttons from left to right
+
+A, B, Combo 1, Combo 2, Z
+
+C button can be in joystick
