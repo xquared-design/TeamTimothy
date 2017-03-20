@@ -8,7 +8,8 @@ Button | Physical Pin # | (BCM) Pin Name.
 2 | 13 | GPIO27
 3 | 15 | GPIO22 
 4 | 29 | GPIO5 
-5 | 31 | GPIO6 
+5 | 31 | GPIO6
+6 | 37 | GPIO26
 
 ## Output (WiiMote buttons)
 
@@ -28,8 +29,9 @@ Ground WiiMote| 9, 25, 39 | GND
 
 Check out [pinout.xyz](https://pinout.xyz/#) for an interactive pinout diagram and [this sparkfun tutorial](https://learn.sparkfun.com/tutorials/raspberry-gpio) for a detailed explanation of GPIO on the Raspberry Pi.
 
-## Buttons from left to right
+## Nominal button functions from left to right
 
-A, B, Combo 1, Combo 2, Z
+C button can be in joystick (button 6)
 
-C button can be in joystick
+A, B, Combo 1, Combo 2, Z (buttons 1-5)
+
