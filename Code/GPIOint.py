@@ -5,7 +5,7 @@ import os
 GPIO.setmode(GPIO.BCM) #use BCM numbering scheme
 
 #map buttons to BCM pins per PinOut.md
-DictIn = {1:17,2:27,3:22,4:5,5:6}
+DictIn = {1:17,2:27,3:22,4:5,5:6,6:26}
 DictOut = {'A':18,'B':23,'C':24,'Z':25}
 
 for key in DictIn:
@@ -19,7 +19,7 @@ GPIO.setup(21, GPIO.OUT, initial=GPIO.LOW) #setup power on indicator light
 GPIO.setup(26, GPIO.IN, pull_up_down=GPIO.PUD_UP) #setup shutdown button
 
 #map BCM button inputs to BCM Wiimote outputs
-comboLookup = {17:[18],27:[23],22:[18,23],5:[24],6:[25]}  
+comboLookup = {17:[18],27:[23],22:[18,23],5:[18,23],6:[25],26:[24]}  
 
 #when an input pin is called, toggle the corresponding output pin ON (LOW) and OFF
 def thread_outputMacro(pin):
