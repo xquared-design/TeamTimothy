@@ -1,7 +1,8 @@
 # RPi Zero GPIO Pinout Mapping
 
-## Input (red buttons)
+## Inputs
 
+### Red buttons
 Button | Physical Pin # | (BCM) Pin Name.
 --- | --- | ---
 1 | 11 | GPIO17
@@ -9,9 +10,13 @@ Button | Physical Pin # | (BCM) Pin Name.
 3 | 15 | GPIO22 
 4 | 29 | GPIO5 
 5 | 31 | GPIO6
+
+### Joystick button
+Button | Physical Pin # | (BCM) Pin Name.
+--- | --- | ---
 6 | 37 | GPIO26
 
-## Output (WiiMote buttons)
+## Outputs (WiiMote buttons)
 
 Button | Physical Pin # | (BCM) Pin Name.
 --- | --- | ---
