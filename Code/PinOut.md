@@ -36,7 +36,7 @@ Check out [pinout.xyz](https://pinout.xyz/#) for an interactive pinout diagram a
 
 ## Nominal button functions from left to right
 
-C button can be in joystick (button 6)
+C button will be in joystick (button 6)
 
 A, B, Combo 1, Combo 2, Z (buttons 1-5)
 
