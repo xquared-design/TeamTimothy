@@ -34,13 +34,14 @@ def thread_outputMacro(pin):
 
 def callback_btnPress(pin):
     #GPIO.output(18, GPIO.LOW)
-    if GPIO.input(pin)
+    if not GPIO.input(pin):
         print "btn %d pressed" % pin
-        t=threading.Thread(target=thread_outputMacro, args=(pin,),name="macroThread")
-        t.start()
-    else
+        #t=threading.Thread(target=thread_outputMacro, args=(pin,),name="macroThread")
+        #t.start()
+        GPIO.output(comboLookup[pin],GPIO.LOW)
+    else:
         print "btn %d released" % pin
-    #GPIO.output(18, GPIO.HIGH)
+        GPIO.output(comboLookup[pin], GPIO.HIGH)
 
 # def callback_btnRelease(pin):
 #    print "btn %d released" % pin
@@ -64,7 +65,7 @@ def callback_btnShutdown(pin):
 #    GPIO.output(23, GPIO.HIGH)
 
 for key in DictIn:
-    GPIO.add_event_detect(DictIn[key], GPIO.BOTH, callback=callback_btnPress,bouncetime=300)
+    GPIO.add_event_detect(DictIn[key], GPIO.BOTH, callback=callback_btnPress,bouncetime=100)
     #GPIO.add_event_detect(DictIn[key], GPIO.RISING, callback=callback_btnRelease,bouncetime=300)
 
 GPIO.add_event_detect(16, GPIO.FALLING, callback=callback_btnShutdown, bouncetime=300)
