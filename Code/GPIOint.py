@@ -9,24 +9,24 @@ GPIO.setmode(GPIO.BCM) #use BCM numbering scheme
 
 DictIn = {1:17,2:27,3:22,4:5,5:6,6:26}
 DictOut = {'A':18,'B':23,'C':25,'Z':24}
-WII_A = 18
-WII_B = 23
-WII_C = 25
-WII_Z = 24
+WII_A = DictOut['A']
+WII_B = DictOut['B']
+WII_C = DictOut['C']
+WII_Z = DictOut['Z']
 
+
+
+#map buttons to BCM pins per PinOut.md
 for key in DictIn:
     GPIO.setup(DictIn[key], GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 for key in DictOut:
     GPIO.setup(DictOut[key], GPIO.OUT, initial=GPIO.HIGH)
 
-
-
-#map buttons to BCM pins per PinOut.md
 GPIO.setup(20, GPIO.OUT, initial=GPIO.LOW) #setup power on indicator light
 GPIO.setup(16, GPIO.IN, pull_up_down=GPIO.PUD_UP) #setup shutdown btn
 
-comboLookup = {17:[0,WII_A], 27:[1,WII_A, 0.250, WII_A, 0.250, WII_B, 0.250],22:[0, WII_Z],5:[0, WII_A, WII_B],6:[0, WII_C]}
+comboLookup = {17:[0,WII_A], 27:[1,WII_A, 0.250, WII_A, 0.250, WII_B, 0.250],22:[0, WII_Z],5:[0, WII_B],6:[1, WII_A, 0.250, WII_A, 0.250], 26:[0, WII_C]}
 
 #when an input pin is called, toggle the corresponding output pin ON (LOW) and OFF
 def thread_seqMacro(pin):
@@ -64,10 +64,15 @@ def callback_btnPress(pin):
 
 
 def callback_btnShutdown(pin):
-    time.sleep(2)
-    if not GPIO.input(pin):
+    t=threading.Thread(target=thread_wait4ShutDown, args=(pin,),name="shutdownThread")
+    t.start()
+
+def thread_wait4ShutDown(pin):
+    time.sleep(3) #wait for three second
+    if not GPIO.input(pin): #if button still held down, initiate shutdown sequence
         GPIO.cleanup()           # clean up GPIO on shutdown
         os.system("sudo shutdown -h now")
+
 
 #def callback_btn27(channel):
 #    GPIO.output(23, GPIO.LOW)
@@ -82,7 +87,7 @@ def callback_btnShutdown(pin):
 #    GPIO.output(23, GPIO.HIGH)
 
 for key in DictIn:
-    GPIO.add_event_detect(DictIn[key], GPIO.BOTH, callback=callback_btnPress,bouncetime=100)
+    GPIO.add_event_detect(DictIn[key], GPIO.BOTH, callback=callback_btnPress,bouncetime=50)
     #GPIO.add_event_detect(DictIn[key], GPIO.RISING, callback=callback_btnRelease,bouncetime=300)
 
 GPIO.add_event_detect(16, GPIO.FALLING, callback=callback_btnShutdown, bouncetime=300)
