@@ -4,41 +4,75 @@ import threading
 import os
 GPIO.setmode(GPIO.BCM) #use BCM numbering scheme
 
-#map buttons to BCM pins per PinOut.md
-DictIn = {1:17,2:27,3:22,4:5,5:6,6:26}
-DictOut = {'A':18,'B':23,'C':24,'Z':25}
+#threadList = []
 
+
+DictIn = {1:17,2:27,3:22,4:5,5:6,6:26}
+DictOut = {'A':18,'B':23,'C':25,'Z':24}
+WII_A = DictOut['A']
+WII_B = DictOut['B']
+WII_C = DictOut['C']
+WII_Z = DictOut['Z']
+
+
+
+#map buttons to BCM pins per PinOut.md
 for key in DictIn:
     GPIO.setup(DictIn[key], GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 for key in DictOut:
     GPIO.setup(DictOut[key], GPIO.OUT, initial=GPIO.HIGH)
 
+GPIO.setup(20, GPIO.OUT, initial=GPIO.LOW) #setup power on indicator light
+GPIO.setup(16, GPIO.IN, pull_up_down=GPIO.PUD_UP) #setup shutdown btn
 
-GPIO.setup(21, GPIO.OUT, initial=GPIO.LOW) #setup power on indicator light
-GPIO.setup(26, GPIO.IN, pull_up_down=GPIO.PUD_UP) #setup shutdown button
-
-#map BCM button inputs to BCM Wiimote outputs
-comboLookup = {17:[18],27:[23],22:[18,23],5:[18,23],6:[25],26:[24]}  #button 6/GPIO26 (on joystick) mapped to C
+comboLookup = {17:[0,WII_A], 27:[1,WII_A, 0.250, WII_A, 0.250, WII_B, 0.250],22:[0, WII_Z],5:[0, WII_B],6:[1, WII_A, 0.250, WII_A, 0.250], 26:[0, WII_C]}
 
 #when an input pin is called, toggle the corresponding output pin ON (LOW) and OFF
-def thread_outputMacro(pin):
-    GPIO.output(comboLookup[pin],GPIO.LOW)
-    print "pulling",  "low"
-    time.sleep(0.25)
-    GPIO.output(comboLookup[pin],GPIO.HIGH)
-    print "returning",  "high"
+def thread_seqMacro(pin):
+    for i in range(1, len(comboLookup[pin]), 2): #iterate through the list of btns, starting from 1, skipping over the durations
+        GPIO.output(comboLookup[pin][i],GPIO.LOW)
+        print "pulling",  "low"
+        dur = comboLookup[pin][i+1]
+        time.sleep(dur)
+        GPIO.output(comboLookup[pin][i],GPIO.HIGH)
+        print "returning",  "high"
+        time.sleep(0.1)
 
 def callback_btnPress(pin):
     #GPIO.output(18, GPIO.LOW)
-    print "btn %d pressed" % pin
-    t=threading.Thread(target=thread_outputMacro, args=(pin,),name="macroThread")
-    t.start()
-    #GPIO.output(18, GPIO.HIGH)
+    if not GPIO.input(pin):
+        print "btn %d pressed" % pin
+        if comboLookup[pin][0]==0:
+            GPIO.output(comboLookup[pin][1:],GPIO.LOW)
+        elif comboLookup[pin][0]==1:
+            t=threading.Thread(target=thread_seqMacro, args=(pin,),name="macroThread")
+            t.start()
+#            if threadList
+#                lastCombo=threadList.pop()
+#                lastCombo
+#            threadList.appedn(t)
+    else:
+        print "btn %d released" % pin
+        if comboLookup[pin][0]==0:
+            GPIO.output(comboLookup[pin][1:], GPIO.HIGH)
+        # elif comboLookup[pin][0]==1:s
+
+# def callback_btnRelease(pin):
+#    print "btn %d released" % pin
+
+
 
 def callback_btnShutdown(pin):
-    GPIO.cleanup()           # clean up GPIO on shutdown
-    os.system("sudo shutdown -h now")
+    t=threading.Thread(target=thread_wait4ShutDown, args=(pin,),name="shutdownThread")
+    t.start()
+
+def thread_wait4ShutDown(pin):
+    time.sleep(3) #wait for three second
+    if not GPIO.input(pin): #if button still held down, initiate shutdown sequence
+        GPIO.cleanup()           # clean up GPIO on shutdown
+        os.system("sudo shutdown -h now")
+
 
 #def callback_btn27(channel):
 #    GPIO.output(23, GPIO.LOW)
@@ -53,11 +87,12 @@ def callback_btnShutdown(pin):
 #    GPIO.output(23, GPIO.HIGH)
 
 for key in DictIn:
-    GPIO.add_event_detect(DictIn[key], GPIO.FALLING, callback=callback_btnPress,bouncetime=500)
+    GPIO.add_event_detect(DictIn[key], GPIO.BOTH, callback=callback_btnPress,bouncetime=50)
+    #GPIO.add_event_detect(DictIn[key], GPIO.RISING, callback=callback_btnRelease,bouncetime=300)
 
-GPIO.add_event_detect(26, GPIO.RISING, callback=callback_btnShutdown, bouncetime=500)
+GPIO.add_event_detect(16, GPIO.FALLING, callback=callback_btnShutdown, bouncetime=300)
 
-GPIO.output(21,GPIO.HIGH)
+GPIO.output(20,GPIO.HIGH)
 
 try:
     while True:
